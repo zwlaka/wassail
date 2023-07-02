@@ -34,9 +34,9 @@ let get_funcinst (m : t) (fidx : Int32.t) : Func_inst.t =
   | Some v -> v
   | None -> failwith "No function instance found"
   
-let get_funcinst1 (m : t) (fidx : Int32.t) : Func_inst.t option=
+let get_funcinst1 (m : t) (fidx : Int32.t) : Func_inst.t =
   match List32.nth m.funcs Int32.(fidx-(Int32.of_int_exn (List.length m.imported_funcs))) with
-  | Some v -> v
+  | Some v -> Some v
   | None -> None
 
 (** Get the name of a function, if it has one *)
