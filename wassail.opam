@@ -6,8 +6,8 @@ synopsis:
 maintainer: "Quentin Stiévenart <quentin.stievenart@gmail.com>"
 authors: "Quentin Stiévenart <quentin.stievenart@gmail.com>"
 license: "GPL-3.0-or-later"
-homepage: "https://github.com/acieroid/wassail"
-bug-reports: "https://github.com/acieroid/wassail"
+homepage: "https://github.com/zwlaka/wassail,"
+bug-reports: "https://github.com/zwlaka/wassail"
 depends: [
 #  "apron" # LGPL
   "core" # MIT
@@ -24,7 +24,7 @@ build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
-dev-repo: "git+https://github.com/acieroid/wassail"
+dev-repo: "git+https://github.com/zwlaka/wassail"
 url {
-  src: "git+https://github.com/acieroid/wassail"
+  src: "git+https://github.com/zwlaka/wassail"
 }

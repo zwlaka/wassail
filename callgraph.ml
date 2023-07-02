@@ -19,7 +19,7 @@ let callgraph =
           Log.warn "Call graph generation cannot deal with imported tables if they are used for indirect calls";
         Out_channel.with_file file_out
           ~f:(fun ch ->
-              Out_channel.output_string ch (Call_graph.to_dot cg)))
+              Out_channel.output_string ch (Call_graph.to_dot cg wasm_mod)))
 
 let reduced_callgraph =
   Command.basic
@@ -33,7 +33,7 @@ let reduced_callgraph =
        let cg = Call_graph.make wasm_mod in
        let filtered_cg = Call_graph.keep_reachable cg (Int32Set.singleton fidx) in
        Out_channel.with_file file_out
-         ~f:(fun ch -> Out_channel.output_string ch (Call_graph.to_dot filtered_cg)))
+         ~f:(fun ch -> Out_channel.output_string ch (Call_graph.to_dot filtered_cg wasm_mod)))
 
 let schedule =
   Command.basic
