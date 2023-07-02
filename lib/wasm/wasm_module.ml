@@ -38,12 +38,12 @@ let get_funcinst1 (m : t) (fidx : Int32.t) : Func_inst.t option=
   List32.nth m.funcs Int32.(fidx-(Int32.of_int_exn (List.length m.imported_funcs)))
 
 (** Get the name of a function, if it has one *)
-let get_funcname (m : t) (fidx : Int32.t) : string option =
+let get_funcname (m : t) (fidx : Int32.t) : string =
   let funcinst = get_funcinst m fidx in
   funcinst.name
 
 (** Get the name of a function, if it has one *)
-let get_funcname_1 (m : t) (fidx : Int32.t) : string =
+let get_funcname_1 (m : t) (fidx : Int32.t) : string option=
   let funcinst = get_funcinst1 m fidx in
   match funcinst with
   | Some inst -> inst.name
