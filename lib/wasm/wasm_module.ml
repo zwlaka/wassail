@@ -43,7 +43,7 @@ let get_funcname (m : t) (fidx : Int32.t) : string option=
   funcinst.name
 
 (** Get the name of a function, if it has one *)
-let get_funcname_1 (m : t) (fidx : Int32.t) : string option=
+let get_funcname_1 (m : t) (fidx : Int32.t) : string =
   let funcinst = get_funcinst1 m fidx in
   match funcinst with
   | Some inst -> inst.name
