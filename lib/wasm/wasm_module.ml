@@ -38,6 +38,10 @@ let get_funcinst (m : t) (fidx : Int32.t) : Func_inst.t =
 let get_funcname (m : t) (fidx : Int32.t) : string option =
   let funcinst = get_funcinst m fidx in
   funcinst.name
+(** Get the name of a function, if it has one *)
+let get_funcname_1 (m : t) (fidx : Int32.t) : string  =
+  let funcinst = get_funcinst m fidx in
+  funcinst.name
 
 (** Get the index and name of all functions that have names, as a map from function name to its index *)
 let get_funcnames (m : t) : int32 StringMap.t =
