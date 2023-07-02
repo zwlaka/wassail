@@ -32,7 +32,7 @@ include T
 let get_funcinst (m : t) (fidx : Int32.t) : Func_inst.t =
   match List32.nth m.funcs Int32.(fidx-(Int32.of_int_exn (List.length m.imported_funcs))) with
   | Some v -> v
-  | None -> failwith "get_funcinst nth exception"
+  | None -> "no instance"
 
 (** Get the name of a function, if it has one *)
 let get_funcname (m : t) (fidx : Int32.t) : string option =
