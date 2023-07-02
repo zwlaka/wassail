@@ -63,6 +63,8 @@ let to_dot (cg : t)( wasm_mod : Wasm_module.t) : string =
   Printf.sprintf "digraph \"Call graph\" {\n%s\n%s\n}"
     (String.concat ~sep:"\n"
        (List.map (Int32Set.to_list cg.nodes) ~f:(fun n ->
+            let name = Wasm_module.get_funcname_1 wasm_mod n in
+            Printf.printf "%s\n" name;
             Printf.sprintf "node%s [shape=record, mlabel=\"{%s}\"];" (Int32.to_string n) ("yahh"))))
     (String.concat ~sep:"\n" (List.concat_map (Int32Map.to_alist cg.edges)
                                 ~f:(fun (src, dsts) ->
