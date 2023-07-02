@@ -30,20 +30,28 @@ include T
 
 (** Get the function instance for the function with index fidx *)
 let get_funcinst (m : t) (fidx : Int32.t) : Func_inst.t =
+  match List32.nth m.funcs Int32.(fidx - (Int32.of_int_exn (List.length m.imported_funcs))) with
+  | Some v -> v
+  | None -> failwith "No function instance found"
+  
+let get_funcinst1 (m : t) (fidx : Int32.t) : Func_inst.t =
   match List32.nth m.funcs Int32.(fidx-(Int32.of_int_exn (List.length m.imported_funcs))) with
   | Some v -> v
-  | None -> "no instance"
+  | None -> None
 
 (** Get the name of a function, if it has one *)
 let get_funcname (m : t) (fidx : Int32.t) : string option =
   let funcinst = get_funcinst m fidx in
   funcinst.name
+
 (** Get the name of a function, if it has one *)
-let get_funcname_1 (m : t) (fidx : Int32.t) : string  =
-  let funcinst = get_funcinst m fidx in
-  match funcinst.name with
-  | Some name -> name
-  | None -> "yahaha"
+let get_funcname_1 (m : t) (fidx : Int32.t) : string =
+  match get_funcinst1 m fidx with
+  | Some funcinst ->
+    (match funcinst.name with
+    | Some name -> name
+    | None -> "yahaha")
+  | None -> "no instance"
 
 (** Get the index and name of all functions that have names, as a map from function name to its index *)
 let get_funcnames (m : t) : int32 StringMap.t =
